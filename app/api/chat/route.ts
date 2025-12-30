@@ -33,12 +33,13 @@ export async function POST(req: Request) {
     hasAttachment: boolean;
   } = await req.json();
   let Agentmodel;
+
   if (hasAttachment) {
     Agentmodel = google("gemini-2.5-flash-lite-preview-09-2025");
   } else if (model.includes("qwen")) {
-    Agentmodel = cerebras.chat("qwen-3-235b-a22b-thinking-2507");
+    Agentmodel = cerebras("qwen-3-32b");
   } else if (model.includes("llama")) {
-    Agentmodel = groq("meta-llama/llama-guard-4-12b");
+    Agentmodel = groq("llama-3.1-8b-instant");
   } else if (model.includes("grok")) {
     Agentmodel = xai("grok-3-mini-fast");
   } else if (model.includes("oss")) {
@@ -67,7 +68,7 @@ export async function POST(req: Request) {
         sendReasoning: true,
       });
     } else if (
-      searchModel[Math.floor(Math.random() * searchModel.length)] === "groq"
+      searchModel[Math.floor(Math.random() * searchModel.length)] === "groq" && !hasAttachment
     ) {
       const result = await streamText({
         model: groq("openai/gpt-oss-120b"), // Must use supported model
@@ -86,7 +87,7 @@ export async function POST(req: Request) {
       Agentmodel = perplexity("sonar");
     }
   }
-  if (model.includes("free") || !hasAttachment) {
+  if (model.includes("free") && !hasAttachment) {
     const result = streamText({
       model: openrouter.chat(model), // or gemini-1.5-flash
       messages: await convertToModelMessages(messages),

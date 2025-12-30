@@ -95,10 +95,10 @@ const models = [
     name: "gpt-oss-20b",
     value: "openai/gpt-oss-20b:free",
   },
-  {
-    name: "Grok 3 Mini",
-    value: "grok-3-mini-fast",
-  },
+//   {
+//     name: "Grok 3 Mini",
+//     value: "grok-3-mini-fast",
+//   },
   {
     name: "GPT-OSS 20B",
     value: "openai/gpt-oss-20b:cheapest",
