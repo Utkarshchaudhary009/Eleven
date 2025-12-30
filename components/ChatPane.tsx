@@ -213,27 +213,6 @@ const ChatPane = () => {
                           <MessageContent>
                             <MessageResponse>{part.text}</MessageResponse>
                           </MessageContent>
-                          {message.role != "assistant" &&
-                            i != 1 && (
-                              <MessageActions>
-                                {i === messages.length && (
-                                  <MessageAction
-                                    onClick={() => regenerate()}
-                                    label="Retry"
-                                  >
-                                    <RefreshCcwIcon className="size-3" />
-                                  </MessageAction>
-                                )}
-                                <MessageAction
-                                  onClick={() =>
-                                    navigator.clipboard.writeText(part.text)
-                                  }
-                                  label="Copy"
-                                >
-                                  <CopyIcon className="size-3" />
-                                </MessageAction>
-                              </MessageActions>
-                            )}
                         </Message>
                       );
                     case "reasoning":
