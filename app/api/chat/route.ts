@@ -25,13 +25,17 @@ export async function POST(req: Request) {
     messages,
     model,
     webSearch,
+    hasAttachment,
   }: {
-    messages: [];
+    messages: UIMessage[];
     model: string;
     webSearch: boolean;
+    hasAttachment: boolean;
   } = await req.json();
   let Agentmodel;
-  if (model.includes("qwen")) {
+  if (hasAttachment) {
+    Agentmodel = google("gemini-2.5-flash-lite-preview-09-2025");
+  } else if (model.includes("qwen")) {
     Agentmodel = cerebras.chat("qwen-3-235b-a22b-thinking-2507");
   } else if (model.includes("llama")) {
     Agentmodel = groq("meta-llama/llama-guard-4-12b");
@@ -42,28 +46,47 @@ export async function POST(req: Request) {
   } else {
     Agentmodel = google("gemini-2.5-flash-lite-preview-09-2025");
   }
+
+  // Example: check if the last message contains an 'attachment' property
   if (webSearch) {
-    const searchModel=["g","g","g","p"];
+    const searchModel = ["groq", "groq", "g", "p"];
     if (searchModel[Math.floor(Math.random() * searchModel.length)] === "g") {
-    const result = streamText({
-      model: google("gemini-2.5-flash-lite-preview-09-2025"),
-      messages: await convertToModelMessages(messages),
-      tools: {
-        google_search: google.tools.googleSearch({}),
-        url_context: google.tools.urlContext({}),
-      },
-      system:
-        "You are a helpful assistant that can answer questions and help with tasks",
-    });
-    // send sources and reasoning back to the client
-    return result.toUIMessageStreamResponse({
-      sendSources: true,
-      sendReasoning: true,
-    });}
-    else {
-    Agentmodel = perplexity("sonar");}
+      const result = streamText({
+        model: google("gemini-2.5-flash-lite-preview-09-2025"),
+        messages: await convertToModelMessages(messages),
+        tools: {
+          google_search: google.tools.googleSearch({}),
+          url_context: google.tools.urlContext({}),
+        },
+        system:
+          "You are a helpful assistant that can answer questions and help with tasks",
+      });
+      // send sources and reasoning back to the client
+      return result.toUIMessageStreamResponse({
+        sendSources: true,
+        sendReasoning: true,
+      });
+    } else if (
+      searchModel[Math.floor(Math.random() * searchModel.length)] === "groq"
+    ) {
+      const result = await streamText({
+        model: groq("openai/gpt-oss-120b"), // Must use supported model
+        prompt:
+          "What are the latest developments in AI? Please search for recent news.",
+        tools: {
+          browser_search: groq.tools.browserSearch({}),
+        },
+        toolChoice: "required", // Ensure the tool is used
+      });
+      return result.toUIMessageStreamResponse({
+        sendSources: true,
+        sendReasoning: true,
+      });
+    } else {
+      Agentmodel = perplexity("sonar");
+    }
   }
-  if (model.includes("free")) {
+  if (model.includes("free") || !hasAttachment) {
     const result = streamText({
       model: openrouter.chat(model), // or gemini-1.5-flash
       messages: await convertToModelMessages(messages),
