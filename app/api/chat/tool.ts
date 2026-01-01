@@ -13,9 +13,12 @@ export const tools = {
       query: z.string().describe("The search query to look up."),
       time: z.enum(["d", "w", "m", "y"]).optional().describe("Time limit: d (day), w (week), m (month), y (year)"),
     }),
-    execute: async ({ query, time }) => {
+    execute: async ({ query, time }:{query:string,time:string}) => {
+        if (!query ){ throw new Error("Try again with a query."); } 
       try {
+        console.log("Query:", query, "Time:", time);
         const url = new URL('/api/search', baseUrl);
+        console.log("Search API URL:", url.toString());
         url.searchParams.set('q', query);
         if (time) url.searchParams.set('time', time);
 

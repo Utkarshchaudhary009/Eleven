@@ -42,7 +42,10 @@ export async function POST(req: Request) {
     };
 
     // Use selected prompt or fallback to a default
-    const systemPrompt = PromptTemplates[system_prompt]["system_prompt"] || PromptTemplates["casual"]["system_prompt"] || "You are a helpful assistant.";
+    // Safer lookup using optional chaining
+const systemPrompt = PromptTemplates[system_prompt]?.system_prompt || 
+                     PromptTemplates["casual"]?.system_prompt || 
+                     "You are a helpful assistant.";
     const modelInstance = getModel(model, hasAttachment);
 
     // --- CASE 1: Web Search Flow ---
