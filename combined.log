@@ -1,0 +1,25 @@
+{"level":"info","message":"Initializing DDGS with options","timeout":10000,"timestamp":"2026-01-01T05:46:54.847Z","verify":true}
+{"backend":"auto","keywords":"latestmodelofopenai","level":"info","maxResults":10,"message":"Starting text search","region":"wt-wt","safesearch":"moderate","timelimit":null,"timestamp":"2026-01-01T05:46:54.849Z"}
+{"keywords":"latestmodelofopenai","level":"info","maxResults":10,"message":"Starting HTML search","region":"wt-wt","timelimit":null,"timestamp":"2026-01-01T05:46:54.850Z"}
+{"level":"info","message":"Making request","method":"POST","timestamp":"2026-01-01T05:46:54.850Z","url":"https://html.duckduckgo.com/html"}
+{"level":"info","message":"Reached maximum results limit","resultCount":10,"timestamp":"2026-01-01T05:46:55.920Z"}
+{"backend":"html","level":"info","message":"Search completed successfully","resultCount":10,"timestamp":"2026-01-01T05:46:55.923Z"}
+{"level":"info","message":"Initializing DDGS with options","timeout":10000,"timestamp":"2026-01-01T05:47:43.314Z","verify":true}
+{"backend":"auto","keywords":"latestmodelofopenaijan2026","level":"info","maxResults":10,"message":"Starting text search","region":"wt-wt","safesearch":"moderate","timelimit":null,"timestamp":"2026-01-01T05:47:43.315Z"}
+{"keywords":"latestmodelofopenaijan2026","level":"info","maxResults":10,"message":"Starting HTML search","region":"wt-wt","timelimit":null,"timestamp":"2026-01-01T05:47:43.315Z"}
+{"level":"info","message":"Making request","method":"POST","timestamp":"2026-01-01T05:47:43.316Z","url":"https://html.duckduckgo.com/html"}
+{"level":"info","message":"Reached maximum results limit","resultCount":10,"timestamp":"2026-01-01T05:47:44.292Z"}
+{"backend":"html","level":"info","message":"Search completed successfully","resultCount":10,"timestamp":"2026-01-01T05:47:44.293Z"}
+{"level":"info","message":"Initializing DDGS with options","timeout":10000,"timestamp":"2026-01-01T05:55:09.347Z","verify":true}
+{"backend":"auto","keywords":"latestmodelofopenaijan2026","level":"info","maxResults":10,"message":"Starting text search","region":"wt-wt","safesearch":"moderate","timelimit":"m","timestamp":"2026-01-01T05:55:09.348Z"}
+{"keywords":"latestmodelofopenaijan2026","level":"info","maxResults":10,"message":"Starting HTML search","region":"wt-wt","timelimit":"m","timestamp":"2026-01-01T05:55:09.348Z"}
+{"level":"info","message":"Making request","method":"POST","timestamp":"2026-01-01T05:55:09.348Z","url":"https://html.duckduckgo.com/html"}
+{"level":"info","message":"Reached maximum results limit","resultCount":10,"timestamp":"2026-01-01T05:55:10.281Z"}
+{"backend":"html","level":"info","message":"Search completed successfully","resultCount":10,"timestamp":"2026-01-01T05:55:10.282Z"}
+{"level":"info","message":"Initializing DDGS with options","timeout":10000,"timestamp":"2026-01-01T06:11:17.208Z","verify":true}
+{"backend":"auto","keywords":"latestmodelofopenai","level":"info","maxResults":20,"message":"Starting text search","region":"wt-wt","safesearch":"moderate","timelimit":"m","timestamp":"2026-01-01T06:11:17.209Z"}
+{"keywords":"latestmodelofopenai","level":"info","maxResults":20,"message":"Starting HTML lite search","region":"wt-wt","timelimit":"m","timestamp":"2026-01-01T06:11:17.209Z"}
+{"level":"info","message":"Making request","method":"POST","timestamp":"2026-01-01T06:11:17.209Z","url":"https://lite.duckduckgo.com/lite"}
+{"level":"info","message":"Making request","method":"POST","timestamp":"2026-01-01T06:11:18.229Z","url":"https://lite.duckduckgo.com/lite"}
+{"level":"info","message":"Reached maximum results limit","resultCount":20,"timestamp":"2026-01-01T06:11:19.477Z"}
+{"backend":"lite","level":"info","message":"Search completed successfully","resultCount":20,"timestamp":"2026-01-01T06:11:19.478Z"}

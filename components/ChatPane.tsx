@@ -33,7 +33,6 @@ import {
   PromptInputFooter,
   PromptInputTools,
 } from "@/components/ai-elements/prompt-input";
-
 import { Suggestion, Suggestions } from "@/components/ai-elements/suggestion";
 
 import {
@@ -134,6 +133,7 @@ const ChatPane = () => {
           model: model,
           webSearch: webSearch,
           hasAttachment: false,
+          system_prompt: "jarvis",
         },
       }
     );
@@ -236,7 +236,7 @@ const ChatPane = () => {
                 })}
               </div>
             ))}
-            {status === "submitted" && <Shimmer>loading...</Shimmer>}
+            {status === "submitted" && <Shimmer >loading...</Shimmer>}
           </ConversationContent>
           <ConversationScrollButton />
         </Conversation>
